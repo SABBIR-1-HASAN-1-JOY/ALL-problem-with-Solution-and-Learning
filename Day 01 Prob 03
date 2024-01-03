@@ -1,6 +1,12 @@
 Problem link : https://codeforces.com/problemset/problem/1917/A
 
 //PROBLEM CODE
+//ALGORITHM: Constructive Algorithm ; Basic math 
+//If 1.any zero available no operation needed;
+     2.odd number of negative elements no operation needed
+     3.even number of negative elements one should be made zero
+     4.all are positive only one element should be made zero
+\\
 #include <bits/stdc++.h>
 using namespace std;
 int main(){
