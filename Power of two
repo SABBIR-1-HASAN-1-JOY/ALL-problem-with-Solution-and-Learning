@@ -1,0 +1,63 @@
+//Problem:https://leetcode.com/problems/power-of-two/description/
+
+Description: Given an integer n, return true if it is a power of two. Otherwise, return false.
+
+An integer n is a power of two, if there exists an integer x such that n == 2x.
+
+//Algorithm:
+1.If n==0 then ans is false
+2.If n==1 then ans is true
+3.Keep dividing n by 2 if at some point n%2 ==1 then ans is false 
+                                        if n==1 or n==2 then ans is true
+
+//Using recursion:
+void powe(int p){
+       if (p==0){
+           ans=false;
+           return;
+       }
+        if(p==1) {
+            ans= true;
+            return ;
+        }
+          if(p%2==0){
+              
+              powe(p/2);
+          }
+          else {
+              ans=false;
+              return;
+          }
+   }
+    bool isPowerOfTwo(int n) {
+        powe(n);
+        return ans;
+    }
+
+//Time:5ms Space:6.3MB
+
+//Using simple main function:
+ bool isPowerOfTwo(int n) {
+        bool ans;
+        if(n==0){
+            ans=false;
+            return ans;
+        }
+        else if(n==1){
+            ans=true;
+            return ans;
+        }
+        while(n){
+            if(n%2){
+                ans=false;
+                return ans;
+            }
+            n/=2;
+            if(n==1){
+                ans=true;
+                return ans;
+            }
+        }
+        return true;
+    }
+//Time:0ms Memory:6.28MB
