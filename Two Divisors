@@ -1,0 +1,21 @@
+//problem:
+A certain number 1≤𝑥≤10^9 is chosen. 
+You are given two integers 𝑎 and 𝑏 , which are the two largest divisors of the number 𝑥
+. At the same time, the condition 1≤𝑎<𝑏<𝑥 is satisfied.
+For the given numbers 𝑎, 𝑏, you need to find the value of 𝑥
+
+Algorithm:
+1.If b%a != 0 then ans= lcm(a,b)
+2. Else b=a.p here p must be the smallest prime factor of b and x
+ so ans = b* b/a
+
+//CODE:
+int a,b,gc,lcd;
+    cin>>a>>b;
+    if(a==1) cout<<b*b<<endl;
+    else{
+      gc=__gcd(a,b);
+      lcd=(a/gc)*b;
+      if(lcd==b) cout<<(b/a)*b<<endl;
+      else cout<<lcd<<endl;
+    }
