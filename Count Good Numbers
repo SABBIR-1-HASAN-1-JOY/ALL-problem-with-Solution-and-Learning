@@ -1,0 +1,38 @@
+//Problem: A digit string is good if the digits (0-indexed) at even indices are even and the digits at odd indices are prime (2, 3, 5, or 7).
+Given an integer n, return the total number of good digit strings of length n. Since the answer may be large, return it modulo 10^9 + 7.
+A digit string is a string consisting of digits 0 through 9 that may contain leading zeros.
+
+Link:https://leetcode.com/problems/count-good-numbers/description/
+
+//Algorithm:
+1. Count Odd_pos and Even_pos. Here Odd_pos=n/2 & Even_pos = (n+1)/2 
+2. For even positions we have 5 options and for odd positions we have 4 options
+3.So ans=(pow(5,Even_pos) * pow(4,Odd_pos))%mod , here mod= 1e9+7
+4.Now we will define a recursive function long long  pow(long long base , long long power)
+ a.if(power==0) return 1;// Base case
+ b.call the function again for power/2. This will eventually lead to power=0
+ c.store our answer in long long ans; ans=ans*ans and ans=ans%mod
+ d.if power is odd ans=ans*base and ans=ans%mod
+ e.return ans;
+
+//CODE:
+(Recursion)
+long long mod=1e9+7;
+long long pow(long long base,long long power){
+    long long int ans=1;
+       if(power==0) return 1;
+       ans=pow(base,power/2);
+       ans*=ans;
+       ans%=mod;
+       if(power%2) ans*=base;
+       ans%=mod;
+       return ans;
+}
+    int countGoodNumbers(long long n) {
+        long long prod;
+        int e=5,o=4;
+        long long od=n/2;
+        long long ev=(n+1)/2;
+        return (pow(5,ev)*pow(4,od))%mo;
+
+    }
