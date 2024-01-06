@@ -1,0 +1,29 @@
+//Problem:In a sequence 𝑎, whose product was equal to 2023, 𝑘 numbers were removed, leaving a sequence 𝑏 of length 𝑛.
+Given the resulting sequence 𝑏, find any suitable sequence 𝑎 and output which 𝑘 elements were removed from it, or state that such a sequence could not have existed.
+
+Link:https://codeforces.com/contest/1916/problem/A
+
+Algorithm:
+1.As A was a sequence whose product is 2023 . This means 2023 was divisible by product(a[i]) and also by a[i]
+2.If we remove some element from A , product(b) will still divide 2023 with 0 remainder
+3.So if 2023%product(b[i]) !=0 then there exists no such sequence
+  else there exists a sequence and one element is 2023/product(b[i]) and other k-1 elements are 1
+
+CODE:
+int n,k,prod=1,ans;
+    cin>>n>>k;
+    int a[n];
+
+ for(int i=0;i<n;i++) {
+  cin>>a[i];
+  prod*=a[i];
+ }
+   if(2023%prod){
+   cout<<"NO\n";
+   } 
+   else{
+    ans=2023/prod;
+    cout<<"YES\n"<<ans;
+   for(int i=1;i<k;i++) cout<<" 1";
+   cout<<"\n";
+   }
