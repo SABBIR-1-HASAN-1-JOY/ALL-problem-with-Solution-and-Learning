@@ -1,0 +1,41 @@
+//Problem:
+Lura was bored and decided to make a simple language using the five letters 𝚊, 𝚋, 𝚌, 𝚍, 𝚎
+. There are two types of letters:
+vowels — the letters 𝚊 and 𝚎. They are represented by 𝖵.
+consonants — the letters 𝚋, 𝚌, and 𝚍. They are represented by 𝖢
+There are two types of syllables in the language: 𝖢𝖵 (consonant followed by vowel) or 𝖢𝖵𝖢 (vowel with consonant before and after). 
+For example, 𝚋𝚊, 𝚌𝚎𝚍, 𝚋𝚊𝚋 are syllables, but 𝚊𝚊, 𝚎𝚍𝚊, 𝚋𝚊𝚋𝚊 are not.
+A word in the language is a sequence of syllables. Lura has written a word in the language, but she doesn't know how to split it into syllables. 
+Help her break the word into syllables.
+For example, given the word 𝚋𝚊𝚌𝚎𝚍𝚋𝚊𝚋, it would be split into syllables as 𝚋𝚊.𝚌𝚎𝚍.𝚋𝚊𝚋 (the dot . represents a syllable boundary).
+//ALGORITHM:
+1.We will iterate from end to begin
+2.If we find vowel push_back s[i],s[i-1],'.' in ans string
+3.Else push_back s[i],s[i-1],s[i-2],'.' in ans string
+4.pop_back() last dot
+5.reversing the ans string we get the actual one
+
+//CODE:
+int l;
+string s,ans;
+cin>>l;
+cin>>s;
+for(int i=l-1;i>=0;i--){
+ if(s[i]=='a'||s[i]=='e'){
+  ans.push_back(s[i]);
+  ans.push_back(s[i-1]);
+  ans.push_back('.');
+  i--;
+ }
+ else{
+  ans.push_back(s[i]);
+  ans.push_back(s[i-1]);
+  ans.push_back(s[i-2]);
+  ans.push_back('.');
+  i-=2;
+ }
+ 
+}
+ans.pop_back();
+reverse(ans.begin(),ans.end());
+ cout<<ans<<endl;
